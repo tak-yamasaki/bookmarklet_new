@@ -1,6 +1,7 @@
 'use strict';
 {
   const TEMPLATE = `<style>
+  /* ... (CSS部分は変更なし) ... */
   #modalWrapper {
     font-family: Arial, sans-serif !important;
     font-size: 14px !important;
@@ -128,10 +129,10 @@
     <li><div id="wp_script_list" class="btn" data-user="yamaguchi"><i class="material-icons">system_update_alt</i>EC・BS投入ツール</div></li>
     <li><div id="inspection" class="btn" data-user="yamaguchi"><i class="material-icons">subject</i>表記チェック</div></li>
     <li><div id="build_taskrunner" class="btn" data-user="yamaguchi"><i class="material-icons">cloud_download</i>BASE復元</div></li>
-    <li><div id="price2table" class="btn" data-user="yamasaki"><i class="material-icons">table_chart</i>料金表テーブル作成</div></li>
-    <li><div id="youtube_structured_data" data-src="https://raw.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/youtube_structured_data.js" class="btn"><i class="material-icons">movie</i>You Tube構造化データ生成</div></li>
-    <li><div id="mag_password" data-src="https://raw.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
-    <li><div id="wp_generate_pages" data-src="https://milliondream.sakura.ne.jp/wp-admin-tools/tools.js" class="btn"><i class="material-icons">content_copy</i>WordPress空ページ一括生成</div></li>
+    <li><div id="price2table" class="btn" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/price2table.js"><i class="material-icons">table_chart</i>料金表テーブル作成</div></li>
+    <li><div id="youtube_structured_data" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/youtube_structured_data.js" class="btn"><i class="material-icons">movie</i>You Tube構造化データ生成</div></li>
+    <li><div id="mag_password" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
+    <li><div id="wp_generate_pages" data-proxy-key="wp_generate_pages" class="btn"><i class="material-icons">content_copy</i>WordPress空ページ一括生成</div></li>
   </ul>
   <h2>BS</h2>
     <ul class="buttonGroup">
@@ -139,8 +140,9 @@
   </ul>
   <h2>EC</h2>
   <ul class="buttonGroup">
-    <li><div id="person_change" class="btn" data-user="iizuka"><i class="material-icons">perm_identity</i>個人情報一人称 一括書き換え</div></li>
-    <li><div id="ecMeta" class="btn" data-user="yamasaki"><i class="material-icons">description</i>ECメタタグ自動投入</div></li>
+    <li><div id="person_change" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/person_change.js" class="btn"><i class="material-icons">perm_identity</i>個人情報一人称 一括書き換え</div></li>
+    <li><div id="ecMeta" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/ecMeta.js" class="btn"><i class="material-icons">description</i>ECメタタグ自動投入</div></li>
+    <li><div id="mag_password" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
     <li><div id="wp_blog_post" class="btn" data-user="yamaguchi"><i class="material-icons">import_export</i>ブログ移行ツール</div></li>
   </ul>
 </div>
@@ -169,6 +171,7 @@
 
   // ... (TEMPLATE定義の下、スクリプト部分) ...
 
+  // VercelのプロキシエンドポイントURL
   const PROXY_ENDPOINT_URL = 'https://million-yamasaki-youtube-api.vercel.app/api/get-script';
 
   // 各ボタン処理
@@ -181,6 +184,7 @@
         const id = targetElement.id;
         const user = targetElement.dataset.user;
         const src = targetElement.dataset.src;
+        const proxyKey = targetElement.dataset.proxyKey; // ★ 修正点 2: proxyKey を取得
 
         modalWrapper.remove();
         s.remove(); // Material Iconsのlinkタグを削除
@@ -192,14 +196,21 @@
           // 3. 読み込み先を分岐 (優先度順)
 
           if (targetElement.hasAttribute('data-user')) {
-            // 【パターンA】data-user が「ある」場合 (最優先)
+            // 【パターンA】data-user (Vercel Proxy)
             scriptSrc = PROXY_ENDPOINT_URL +
               '?user=' + encodeURIComponent(user) +
               '&trigger=' + encodeURIComponent(id) +
-              '&v=' + Date.now(); // キャッシュ対策
+              '&v=' + Date.now();
+
+          } else if (targetElement.hasAttribute('data-proxy-key')) {
+            // ★ 修正点 3: data-proxy-key を処理するロジックを追加
+            // 【パターンB】data-proxy-key (Vercel Proxy)
+            scriptSrc = PROXY_ENDPOINT_URL +
+              '?key=' + encodeURIComponent(proxyKey) +
+              '&v=' + Date.now();
 
           } else if (targetElement.hasAttribute('data-src')) {
-            // 【パターンB】data-src が「ある」場合 (次点)
+            // 【パターンC】data-src (Direct link, e.g., githack)
             scriptSrc = src;
             scriptSrc += (scriptSrc.indexOf('?') === -1 ? '?' : '&') + 'v=' + Date.now();
 
@@ -225,10 +236,9 @@
             document.body.appendChild(s);
 
           } else {
-            console.error('ボタン ' + id + ' には data-user も data-src も設定されていません。');
+            console.error('ボタン ' + id + ' には読み込み可能な属性(data-user, data-proxy-key, data-src)が設定されていません。');
             alert('このボタンは正しく設定されていません。\n(ID: ' + id + ')');
           }
-
         })();
       });
     }
