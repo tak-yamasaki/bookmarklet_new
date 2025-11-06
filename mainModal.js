@@ -129,9 +129,9 @@
     <li><div id="wp_script_list" class="btn" data-user="yamaguchi"><i class="material-icons">system_update_alt</i>EC・BS投入ツール</div></li>
     <li><div id="inspection" class="btn" data-user="yamaguchi"><i class="material-icons">subject</i>表記チェック</div></li>
     <li><div id="build_taskrunner" class="btn" data-user="yamaguchi"><i class="material-icons">cloud_download</i>BASE復元</div></li>
-    <li><div id="price2table" class="btn" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/price2table.js"><i class="material-icons">table_chart</i>料金表テーブル作成</div></li>
-    <li><div id="youtube_structured_data" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/youtube_structured_data.js" class="btn"><i class="material-icons">movie</i>You Tube構造化データ生成</div></li>
-    <li><div id="mag_password" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
+    <li><div id="price2table" class="btn" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/price2table.js"><i class="material-icons">table_chart</i>料金表テーブル作成</div></li>
+    <li><div id="youtube_structured_data" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/youtube_structured_data.js" class="btn"><i class="material-icons">movie</i>You Tube構造化データ生成</div></li>
+    <li><div id="mag_password" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
     <li><div id="wp_generate_pages" data-proxy-key="wp_generate_pages" class="btn"><i class="material-icons">content_copy</i>WordPress空ページ一括生成</div></li>
   </ul>
   <h2>BS</h2>
@@ -140,9 +140,8 @@
   </ul>
   <h2>EC</h2>
   <ul class="buttonGroup">
-    <li><div id="person_change" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/person_change.js" class="btn"><i class="material-icons">perm_identity</i>個人情報一人称 一括書き換え</div></li>
-    <li><div id="ecMeta" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/ecMeta.js" class="btn"><i class="material-icons">description</i>ECメタタグ自動投入</div></li>
-    <li><div id="mag_password" data-src="https://rawcdn.githack.com/tak-yamasaki/bookmarklet_new/refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
+    <li><div id="person_change" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/person_change.js" class="btn"><i class="material-icons">perm_identity</i>個人情報一人称 一括書き換え</div></li>
+    <li><div id="ecMeta" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/ecMeta.js" class="btn"><i class="material-icons">description</i>ECメタタグ自動投入</div></li>
     <li><div id="wp_blog_post" class="btn" data-user="yamaguchi"><i class="material-icons">import_export</i>ブログ移行ツール</div></li>
   </ul>
 </div>
