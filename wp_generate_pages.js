@@ -1,5 +1,4 @@
-'use strict';
-{
+javascript: (function () {
   if (document.getElementById('wp-tools-ui')) return;
 
   // CSSリセット
@@ -167,4 +166,4 @@ C列: 順序<br>
       console.error(e);
     }
   };
-}
+})();
