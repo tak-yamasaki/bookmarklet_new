@@ -131,7 +131,7 @@ C列: 順序<br>
     resultsDiv.innerHTML = '作成中...<br>';
 
     try {
-      let res = await fetch('https://milliondream.sakura.ne.jp/wp-admin-tools/tools.php', {
+      let res = await fetch('https://million-yamasaki-youtube-api.vercel.app/api/create-wp-pages', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
