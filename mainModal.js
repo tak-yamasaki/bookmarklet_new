@@ -132,7 +132,7 @@
     <li><div id="price2table" class="btn" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/price2table.js"><i class="material-icons">table_chart</i>料金表テーブル作成</div></li>
     <li><div id="youtube_structured_data" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/youtube_structured_data.js" class="btn"><i class="material-icons">movie</i>You Tube構造化データ生成</div></li>
     <li><div id="mag_password" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/mag_password.js" class="btn"><i class="material-icons">password</i>MAG用パスワード生成</div></li>
-    <li><div id="wp_generate_pages" data-proxy-key="wp_generate_pages" class="btn"><i class="material-icons">content_copy</i>WordPress空ページ一括生成</div></li>
+    <li><div id="wp_generate_pages" data-src="https://cdn.jsdelivr.net/gh/tak-yamasaki/bookmarklet_new@refs/heads/master/wp_generate_pages.js" class="btn"><i class="material-icons">content_copy</i>WordPress空ページ一括生成</div></li>
   </ul>
   <h2>BS</h2>
     <ul class="buttonGroup">
