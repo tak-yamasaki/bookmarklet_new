@@ -368,7 +368,6 @@
       <option value="4">食べログ（料理・ドリンク・ランチ）</option>
       <option value="5">ぐるなび</option>
       <option value="6">ヒトサラ</option>
-      <option value="7">一休.com</option>
       <option value="8">Retty</option>
     </select>
   </div>
@@ -398,7 +397,6 @@
   // 4:食べログ
   // 5:ぐるなび
   // 6:ヒトサラ
-  // 7:一休.com
   // 8:Retty
   const SETTING = [
     {
@@ -449,13 +447,6 @@
       MENU_NAME: '.name',
       MENU_SUBTEXT: '.desc',
       MENU_PRICE: '.price',
-    },
-    {
-      MENU_TITLE: '一休.com メニュー',
-      MENU_WRAPPER: '._1QMibK-',
-      MENU_NAME: '._1aejHwh',
-      MENU_SUBTEXT: '',
-      MENU_PRICE: '._2Xel14i',
     },
     {
       MENU_TITLE: 'Retty メニュー',
@@ -565,8 +556,6 @@
     targetSite.value = 5;
   } else if (url.indexOf('hitosara') !== -1) {
     targetSite.value = 6;
-  } else if (url.indexOf('ikyu.com') !== -1) {
-    targetSite.value = 7;
   } else if (url.indexOf('retty.me') !== -1) {
     targetSite.value = 8;
   }
